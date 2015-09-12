@@ -83,8 +83,6 @@ L<Math::Cartesian::Product>
 
 L<Set::CrossProduct>
 
-L<Set::Product>
-
 L<Set::Scalar>
 
 =head1 REQUESTS AND BUGS
