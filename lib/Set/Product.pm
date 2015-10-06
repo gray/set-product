@@ -12,8 +12,8 @@ $VERSION = eval $VERSION;
 
 our @EXPORT_OK = qw(product);
 
-my $want_xs = ! $ENV{SET_PRODUCT_PP} and ! $ENV{PURE_PERL}
-    and eval "use Set::Product::XS; 1";
+my $want_xs = ! $ENV{SET_PRODUCT_PP} && ! $ENV{PURE_PERL}
+    && eval "use Set::Product::XS; 1";
 
 no warnings qw(redefine);
 
