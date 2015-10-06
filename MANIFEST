@@ -7,7 +7,8 @@ MANIFEST			This list of files
 README
 t/00_compile.t
 t/01_product.t
-t/02_xs.t
+t/02_pp.t
+t/03_xs.t
 xt/kwalitee.t
 xt/leaktrace.t
 xt/perlcritic.t
