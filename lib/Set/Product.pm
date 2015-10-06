@@ -7,7 +7,7 @@ use Carp qw(croak);
 use Exporter qw(import);
 use Set::Product::PP;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 our @EXPORT_OK = qw(product);
