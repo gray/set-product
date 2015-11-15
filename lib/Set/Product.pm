@@ -3,23 +3,21 @@ package Set::Product;
 use strict;
 use warnings;
 
-use Carp qw(croak);
 use Exporter qw(import);
-use Set::Product::PP;
 
 our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 our @EXPORT_OK = qw(product);
 
-my $want_xs = ! $ENV{SET_PRODUCT_PP} && ! $ENV{PURE_PERL}
-    && eval "use Set::Product::XS; 1";
-
-no warnings qw(redefine);
-
-*product = $want_xs
-    ? \&Set::Product::XS::product
-    : \&Set::Product::PP::product;
+my $want_pp = $ENV{SET_PRODUCT_PP} || $ENV{PURE_PERL};
+if ($want_pp or ! eval "use Set::Product::XS; 1") {
+    require Set::Product::PP;
+    Set::Product::PP->import(@EXPORT_OK);
+}
+else {
+    Set::Product::XS->import(@EXPORT_OK);
+}
 
 
 1;

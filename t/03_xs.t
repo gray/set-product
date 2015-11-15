@@ -12,10 +12,12 @@ ok \&Set::Product::product == \&Set::Product::PP::product,
     'environment variable forced PP';
 
 # Force the module to be reloaded.
-delete $INC{'Set/Product.pm'};
+delete @INC{qw( Set/Product.pm Set/Product/PP.pm )};
 
 local @ENV{qw(SET_PRODUCT_PP PURE_PERL)} = (0) x 2;
 require Set::Product;
 ok \&Set::Product::product == \&Set::Product::XS::product, 'used XS';
+
+ok ! $INC{'Set/Product/PP.pm'}, 'PP not loaded when XS used';
 
 done_testing;
