@@ -5,13 +5,13 @@ use warnings;
 
 use Exporter qw(import);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;
 
 our @EXPORT_OK = qw(product);
 
 my $want_pp = $ENV{SET_PRODUCT_PP} || $ENV{PURE_PERL};
-if ($want_pp or ! eval "use Set::Product::XS; 1") {
+if ($want_pp or ! eval { require Set::Product::XS; 1 }) {
     require Set::Product::PP;
     Set::Product::PP->import(@EXPORT_OK);
 }
